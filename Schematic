@@ -1,2 +1,62 @@
-Schematic for the Motor Driver 
-I  will be using Kicad9.0 to make the schematic and the PCB
+Schematic for the Motor Driver
+![Motor Driver Schematic](Motor_Driver_Schematic.png)
+
+## Features
+
+- **High current support:** Each BTS7970B handles up to **43A** continuous
+- **Full H-Bridge configuration:** Two half-bridges combined to drive motors bidirectionally
+- **PWM-based speed control:** Controlled via STM32 microcontroller
+- **Built-in protections:** Overcurrent, thermal shutdown, and short-circuit detection
+- **Encoder interface:** Connector provided for motor encoder signals
+
+---
+
+## How It Works
+
+- **BTS7970B Half-Bridges**: Each chip controls one motor terminal.
+- **Motor OUT A / B**: Connected to the motor leads.
+- **PWM_A / PWM_B**: Determine direction and speed via PWM.
+- **EN_A / EN_B**: Enable/disable each half-bridge.
+- **IS (Current Sense)**: Connected to an ADC pin for current feedback.
+- **PWR_FLAG / Vm / GND**: Motor power supply and net flags.
+
+---
+
+## Connectors
+
+- `J1` – Input signals from microcontroller
+- `J2` – Motor power input (Vm, GND)
+- `J3` – Motor outputs and encoder header
+
+---
+
+## Comparison: BTS7970B vs L293D
+
+| Feature         | **BTS7970B**         | **L293D**               |
+|-----------------|----------------------|--------------------------|
+| Max Current     | Up to 43A            | 600mA per channel        |
+| Voltage Support | Up to 40V            | Up to 36V                |
+| Efficiency      | High (low R<sub>DS(on)</sub>) | Low (higher losses)     |
+| Protection      | Advanced (Smart Power) | Basic (thermal only)     |
+| Application     | High-power motors     | Small hobby motors       |
+
+---
+
+## Files
+
+- `motor_driver.sch` – KiCad schematic (optional)
+- `motor_driver_schematic.png` – Screenshot of the schematic
+
+---
+
+## Application
+
+This driver was created for our IOT Project, allowing reliable and efficient control of high-power DC motors with feedback and protection.
+
+---
+
+## Notes
+
+- Add **0.1µF** and **470µF** decoupling capacitors for stability
+- Use proper cooling or heatsinks for high current use
+- Ensure VM power supply can handle motor surge currents
