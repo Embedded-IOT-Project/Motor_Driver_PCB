@@ -42,13 +42,6 @@ Schematic for the Motor Driver
 
 ---
 
-## Files
-
-- `motor_driver.sch` – KiCad schematic (optional)
-- `motor_driver_schematic.png` – Screenshot of the schematic
-
----
-
 ## Application
 
 This driver was created for our IOT Project, allowing reliable and efficient control of high-power DC motors with feedback and protection.
