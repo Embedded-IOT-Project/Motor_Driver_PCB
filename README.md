@@ -1,4 +1,4 @@
-# Motor_Diver_PCB
+# Motor_Driver_PCB
 The basics of a motor driver firstly,A motor driver is a circuit that controls motors. Since microcontrollers (like STM32) can’t directly power motors, a motor driver acts as a bridge,letting you control the speed and direction of the motor safely.To make a DC motor spin forward and backward, we use an H-bridge. It has four switches (transistors or MOSFETs) arranged in an “H” shape. By turning certain switches on or off, we can:Spin the motor forward,Spin it backward,Stop it.
 
 For this project I built a custom motor driver using two BTS7970B chips, each working as a half-bridge.Why Two? Each BTS7970B controls one side of the motor. By combining two, I created a full H-bridge that:Lets me control motor direction (by switching which chip is on),Controls speed using PWM signals from the STM32,Includes built-in protection (overcurrent, temperature, etc.).How It Works, the OUT pins of the two chips connect to either side of the motor.The IN pins get PWM signals from the microcontroller.Based on which input is high or low, the motor spins forward, backward, or stops.
